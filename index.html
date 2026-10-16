@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#ffeef4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>给你的道歉信</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 飘浮的爱心/星星层 -->
+<div class="floaties" id="floaties" aria-hidden="true"></div>
+
+<!-- 顶部音乐开关 -->
+<button class="music-btn" id="musicBtn" type="button" aria-label="音乐开关">
+  <span class="music-icon" id="musicIcon">♪</span>
+</button>
+
+<!-- ============ 第 1 屏：封面 ============ -->
+<section class="screen cover is-active" id="screen-cover">
+  <div class="cover-card">
+    <div class="bear">
+      <div class="bear-ear left"></div>
+      <div class="bear-ear right"></div>
+      <div class="bear-face">
+        <div class="bear-eye left"><i></i></div>
+        <div class="bear-eye right"><i></i></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+        <div class="bear-mouth"></div>
+      </div>
+      <div class="bear-hands">
+        <div class="paw left"></div>
+        <div class="paw right"></div>
+      </div>
+    </div>
+
+    <p class="cover-hint" id="coverHint">有一封信，只想给你一个人看</p>
+    <h1 class="cover-title" id="coverTitle">对不起<br>可以听我说完吗</h1>
+    <p class="cover-sub" id="coverSub">建议打开声音，边听边看 ♪</p>
+
+    <button class="btn btn-primary" id="openBtn" type="button">
+      <span>开启这封信</span>
+    </button>
+    <p class="cover-foot" id="coverFoot">点一下 · 音乐就会响起来</p>
+  </div>
+</section>
+
+<!-- ============ 第 2 屏：信 ============ -->
+<section class="screen letter-screen" id="screen-letter">
+  <div class="paper">
+    <div class="tape"></div>
+    <div class="letter-head">
+      <span class="letter-to" id="letterTo">To：亲爱的你</span>
+      <span class="letter-date" id="letterDate"></span>
+    </div>
+    <div class="letter-body" id="letterBody">
+      <!-- 信件正文由 script.js 里的 LETTER 渲染 -->
+    </div>
+    <div class="letter-sign" id="letterSign"></div>
+    <div class="paper-corner"></div>
+  </div>
+
+  <div class="scroll-cue" id="scrollCue">
+    <span class="hint">↓ 读到这儿啦</span>
+    <button class="btn btn-primary" id="goAsk" type="button">去回答 →</button>
+  </div>
+</section>
+
+<!-- ============ 第 3 屏：提问 ============ -->
+<section class="screen ask-screen" id="screen-ask">
+  <div class="ask-card">
+    <div class="ask-emoji" id="askEmoji">🥺</div>
+    <h2 class="ask-title" id="askTitle">原谅我好不好？</h2>
+    <p class="ask-sub" id="askSub">选一个就好，我会认真看的</p>
+
+    <div class="options" id="options" role="radiogroup" aria-label="原谅我好不好">
+      <button class="option option-yes" type="button" role="radio" aria-checked="false" data-value="好">
+        <span class="opt-emoji">🥰</span>
+        <span class="opt-text">好</span>
+      </button>
+      <button class="option option-no" type="button" role="radio" aria-checked="false" data-value="不好">
+        <span class="opt-emoji">😢</span>
+        <span class="opt-text">不好</span>
+      </button>
+    </div>
+
+    <p class="ask-note" id="askNote">选好后会自动告诉你，我收到了</p>
+    <button class="link-btn" id="backToLetter" type="button">← 再看一遍信</button>
+  </div>
+</section>
+
+<!-- 选「不好」时的挽留层 -->
+<div class="plead-mask" id="pleadMask" aria-hidden="true">
+  <div class="plead-card">
+    <div class="plead-emoji" id="pleadEmoji">🥺</div>
+    <p class="plead-text" id="pleadText"></p>
+    <div class="plead-btns">
+      <button class="btn btn-ghost" id="pleadBack" type="button">再想一下下</button>
+      <button class="btn btn-mini" id="pleadKeep" type="button">还是不好</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 第 4 屏：结果 ============ -->
+<section class="screen result-screen" id="screen-result">
+  <div class="result-card">
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+    <div class="result-emoji" id="resultEmoji">💗</div>
+    <h2 class="result-title" id="resultTitle"></h2>
+    <p class="result-text" id="resultText"></p>
+    <div class="result-heart" id="resultHeart"></div>
+    <button class="btn btn-ghost small" id="againBtn" type="button">改一下选择</button>
+    <p class="result-foot" id="resultFoot"></p>
+  </div>
+</section>
+
+<audio id="bgm" loop preload="auto" playsinline webkit-playsinline></audio>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
